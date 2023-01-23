@@ -1,0 +1,8 @@
+id,name,model_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_realestate_formation1,access.realestate.formation1,model_realestate_formation,group_realestate_manager,1,1,1,1
+access_realestate_engineers1,access.realestate.engineers1,model_realestate_engineers,group_realestate_manager,1,1,1,1
+access_count_engineers1,access.count.engineers1,model_count_engineers,group_realestate_manager,1,1,1,1
+
+access_realestate_formation2,access.realestate.formation2,model_realestate_formation,group_realestate_engineer,1,1,1,1
+access_realestate_engineers2,access.realestate.engineers2,model_realestate_engineers,group_realestate_engineer,1,1,1,1

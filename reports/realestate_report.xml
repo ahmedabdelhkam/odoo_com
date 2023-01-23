@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report id="report_realestate"
+            string="print the related report"
+            model="realestate.formation"
+            report_type="qweb-pdf"
+            name="Realestate.r_template"
+            file="Realestate.r_template"/>
+</odoo>

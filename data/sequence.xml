@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="seq_realestate" model="ir.sequence">
+            <field name="name">realestate sequence</field>
+            <field name="code">realestate.sequence</field>
+            <field name="prefix">R:</field>
+            <field name="padding">2</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_engineer" model="ir.sequence">
+            <field name="name">enngineer sequence</field>
+            <field name="code">engineer.sequence</field>
+            <field name="prefix">R:</field>
+            <field name="padding">2</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

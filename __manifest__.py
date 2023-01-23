@@ -1,0 +1,33 @@
+{
+    'name': 'Realestate',
+    'summary': 'Realestate design',
+    'version': '1.1',
+    'description': 'Designing projects for the realestate',
+
+    'category': 'extra tools',
+    'depends': ['sale'],
+    'license': 'AGPL-3',
+    'data': [
+        'security/ir.model.access.csv',
+        'security/security.xml',
+        'data/sequence.xml',
+        'data/mail_template_data.xml',
+        'wizards/createaccount.xml',
+        'wizards/createproject.xml',
+        'views/vewcountengineer.xml',
+        'views/vewrealestateformation.xml',
+        'views/vewrealestateengineer.xml',
+        'views/template.xml',
+        'views/inheritvewsettings.xml',
+        'reports/templates.xml',
+        'reports/realestate_report.xml',
+        'reports/create_project.xml',
+        'reports/create_project_template.xml',
+    ],
+
+    'images': [],
+    'demo': [],
+    'installable': True,
+    'auto_install': False,
+    'application': True,
+}

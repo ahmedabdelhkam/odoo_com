@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Note that if the record of website.menu is uncommented the module will upgrade normally without any errors
+but the website menu that been created will not be displayed at the website .-->
+<odoo>
+   <data>
+<!--        <record id="menu_create_newone" model="website.menu">-->
+<!--            <field name="name">Create a project</field>-->
+<!--            <field name="url">/create/two</field>-->
+
+<!--            <field name="parent_id" ref="website.main_menu"/>-->
+<!--            <field name="sequence" type="int">1</field>-->
+<!--            <field name="website_id" ref="website.default_website"/>-->
+<!--        </record>-->
+
+
+
+<!--        <record id="menu_create_newone" model="website.menu">-->
+<!--            <field name="name">Create a project</field>-->
+<!--            <field name="url">/create/two</field>-->
+
+<!--            <field name="parent_id" search="[('parent_id','=','False'),('website_id','=',obj(ref('website.default_website')).id)]"/>-->
+<!--            <field name="sequence" type="int">6</field>-->
+<!--            <field name="website_id" ref="website.default_website"/>-->
+
+<!--        </record>-->
+
+<!--        <record id="menu_create_anotherone" model="website.menu">-->
+<!--            <field name="name">Create</field>-->
+<!--            <field name="url">/create/newone</field>-->
+
+<!--            <field name="parent_id" ref="Realestate.menu_create_newone"/>-->
+<!--            <field name="sequence" type="int">6</field>-->
+<!--            <field name="website_id" ref="website.default_website"/>-->
+
+<!--        </record>-->
+
+
+
+     <template id="one_project" name="Create new project">
+       <t t-call="website.layout">
+           <div id="wrap">
+               <div class="oe_structure">
+                   <div class="container">
+
+                       <form role="form" action="/create/project" method="post">
+                           <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                           <div class="form.group">
+                               <label for="project_name" class="control-label">project name</label>
+                               <input type="text" name="project_name" t-att-value="project_name"
+                                      id="project_name" class="form-control" placeholder="e.g. john Doe"
+                                      required="required"/>
+                           </div>
+                           <div class="form-group field-name">
+                               <label for="company_name">Company Name</label>
+                               <input type="text" name="company_name" t-att-value="company_name" id="company_name"
+                                      class="form-control form-control-sm" placeholder="e.g. John Doe"
+                                      required="required" t-att-readonly="'readonly' if only_passwords else None"
+                                      t-att-autofocus="'autofocus' if login and not only_passwords else None"/>
+                           </div>
+                           <div class="clearfix oe_login_buttons">
+                               <button type="submit" class="btn btn-primary btn-block">Confirm</button>
+                           </div>
+                       </form>
+
+                   </div>
+               </div>
+           </div>
+       </t>
+   </template>
+
+
+
+<!--   <template id="create_project" name="Create new project">-->
+<!--       <t t-call="website.layout">-->
+<!--           <div id="wrap">-->
+<!--               <div class="oe_structure">-->
+<!--                   <div class="container">-->
+
+<!--                       <form role="form" action="/create/project" method="post">-->
+<!--                           <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>-->
+<!--                           <div class="form.group">-->
+<!--                               <label for="project_name" class="control-label">project name</label>-->
+<!--                               <input type="text" name="project_name" t-att-value="project_name"-->
+<!--                                      id="project_name" class="form-control" placeholder="e.g. john Doe"-->
+<!--                                      required="required"/>-->
+<!--                           </div>-->
+<!--                           <div class="form-group field-name">-->
+<!--                               <label for="company_name">Company Name</label>-->
+<!--                               <input type="text" name="company_name" t-att-value="company_name" id="company_name"-->
+<!--                                      class="form-control form-control-sm" placeholder="e.g. John Doe"-->
+<!--                                      required="required" t-att-readonly="'readonly' if only_passwords else None"-->
+<!--                                      t-att-autofocus="'autofocus' if login and not only_passwords else None"/>-->
+<!--                           </div>-->
+<!--                       </form>-->
+
+<!--                   </div>-->
+<!--               </div>-->
+<!--           </div>-->
+<!--       </t>-->
+<!--   </template>-->
+
+
+       <!--        <template id="create_project" name="Create new project">-->
+<!--                    <t t-call="website.layout">-->
+<!--            <div id="wrap">-->
+<!--                <div class="oe_structure">-->
+<!--                    <div class="container">-->
+
+<!--                       <form role="form"  method="post">-->
+<!--                           <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>-->
+<!--                           <div class="form-group">-->
+<!--                               <label for="project_name" class="control-label">project name</label>-->
+<!--                               <input type="text" name="project_name" t-att-value="project_name"-->
+<!--                                      id="project_name" class="form-control form-control-sm" placeholder="e.g. john Doe"-->
+<!--                                      required="required"/>-->
+<!--                           </div>-->
+<!--                       </form>-->
+<!--                        <div class="form-group field-name">-->
+<!--                            <label for="project_name">Your Name</label>-->
+<!--                            <input type="text" name="project_name" t-att-value="project_name" id="project_name"-->
+<!--                                   class="form-control form-control-sm" placeholder="e.g. John Doe"-->
+<!--                                   required="required" t-att-readonly="'readonly' if only_passwords else None"-->
+<!--                                   t-att-autofocus="'autofocus' if login and not only_passwords else None"/>-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--                    </t>-->
+<!--        </template>-->
+
+
+       <template id="w_template" name="My Projects">
+                    <t t-call="website.layout">
+            <div class="container">
+                This homepage makes you familiar with the projects executed by our company
+                <table>
+                    <thead>
+                        <tr>
+                            <td>
+                                projects
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="projects" t-as="o">
+                            <tr>
+                                <td>
+                                    <p>
+                                        <t t-esc="o.project_name"/>
+
+                                        <t t-esc="o.company_name"/>
+                                    </p>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+                    </t>
+        </template>
+   </data>
+</odoo>

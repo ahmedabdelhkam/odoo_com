@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <data>
+         <record id="engineers_views" model="ir.actions.act_window">
+             <field name="name">All Engineers</field>
+             <field name="res_model">realestate.engineers</field>
+<!--             <field name="view_type">form</field>-->
+             <field name="view_mode">tree,form</field>
+         </record>
+         <record id="return_realestates" model="ir.actions.act_window">
+             <field name="name">All Recards</field>
+             <field name="res_model">realestate.formation</field>
+             <!--             <field name="view_type">form</field>-->
+             <field name="domain">[('engineer_id','=', active_id)]</field>
+             <field name="view_mode">tree,form</field>
+         </record>
+
+         <record id="engineer_tree" model="ir.ui.view">
+             <field name="name">engineer.tree</field>
+             <field name="model">realestate.engineers</field>
+             <field name="arch" type="xml">
+                 <tree>
+                     <field name="name_seq"/>
+                     <field name="engineer_name"/>
+<!--                     <field name="project"/>-->
+                     <field name="engineer_score" avg="Total"/>
+                     <field name="engineer_grade"/>
+                 </tree>
+             </field>
+         </record>
+
+
+
+         <record id="engineer_form" model="ir.ui.view">
+             <field name="name">engineer.form</field>
+             <field name="model">realestate.engineers</field>
+             <field name="arch" type="xml">
+                 <form>
+                     <header>
+                         <button name="action_draft" string="Draft"
+                                 type="object" class="oe_highlight"/>
+                         <button name="action_confirm" string="Confirm"
+                                 type="object" class="oe_highlight"/>
+                         <button name="action_done" string="Done"
+                                 type="object" class="oe_highlight"/>
+                         <button name="action_cancel" string="Cancel"
+                                 type="object" class="oe_highlight"/>
+                         <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done,cancel"/>
+                     </header>
+                     <sheet>
+                         <button name="%(see_account)d" string="see account"
+                                 type="action" class="oe_highlight"
+                                 context="{'default_engineer_name': active_id}"/>
+
+                         <div class="oe_button_box" name="button_box">
+                             <button name="realestate" string="realestates number" icon="fa-users"
+                                     type="object" class="oe_stat_button"/>
+                             <field name="realestates_num" widget="statinfo"/>
+
+<!--                             <button name="toggle_active" icon="fa-comments"-->
+<!--                                     type="object" class="oe_stat_button">-->
+<!--                                 <field name="active" widget="boolean_button"-->
+<!--                                        options="{&quot;&quot;:archive}"/>-->
+<!--                             </button>-->
+                         </div>
+                         <div class="oe_button_box" name="button_box">
+                             <button string="return to realestates"
+                                     name="%(return_realestates)d"
+                                     type="action"
+                                     class="oe_stat_button"
+                                     icon="fa-refresh"/>
+                              <field name="realestates_num" widget="statinfo"/>
+                         </div>
+                         <group>
+                             <field name="name_seq"/>
+                         </group>
+                         <group>
+                             <field name="engineer_name"/>
+                         </group>
+<!--                         <group>-->
+<!--                             <field name="project"/>-->
+<!--                         </group>-->
+                         <group>
+                             <field name="engineer_score"/>
+                         </group>
+                         <group>
+                             <field name="engineer_grade"/>
+                         </group>
+                          <group>
+                             <field name="user_id"/>
+                         </group>
+                         <notebook>
+                             <page string="Descreption" name="engineer natebook ">
+                                 <group>
+                                     <field name="table_descreption"/>
+                                 </group>
+                             </page>
+                             <page string="Recomindations" name="engineer_recomindations_natebook ">
+                                 <group>
+                                     <field name="recomindations_descreption"/>
+                                 </group>
+                             </page>
+                         </notebook>
+                     </sheet>
+                 </form>
+             </field>
+         </record>
+          <record id="from_action_button" model="ir.actions.act_window">
+            <field name="name">Also Engineers </field>
+            <field name="res_model">realestate.formation</field>
+            <field name="view_mode">tree,form</field>
+             <field name="view_id" ref="Realestate.first_views_tree"/>
+              <field name="domain">[('engineer_id', '=',active_id )]</field>
+            <field name="binding_model_id" ref="model_realestate_engineers"/>
+
+        </record>
+
+         <menuitem name="Engineers" id="eng1" parent="system" action="engineers_views"/>
+<!--         <menuitem name="Insert Realestate" id="insertt" parent="system"/>-->
+<!--         <menuitem name="Insert" id="insert_realestate" parent="insertt" action="first_views"/>-->
+
+         <record id="engineer_inherit" model="ir.ui.view">
+             <field name="name">engineer.inherit</field>
+             <field name="model">sale.order</field>
+             <field name="inherit_id" ref="sale.view_order_form"/>
+             <field name="arch" type="xml">
+                 <field name="partner_id" position="after">
+                     <field name="engineer_name"/>
+                 </field>
+             </field>
+         </record>
+
+     </data>
+</odoo>
+
+
+

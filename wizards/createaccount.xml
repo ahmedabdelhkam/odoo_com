@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <record id="count_wizard_form" model="ir.ui.view">
+            <field name="name">count.wizard.form</field>
+            <field name="model">count.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="engineer_name"/>
+                    </group>
+                    <group>
+                        <field name="salary"/>
+                    </group>
+                     <footer>
+                         <button name="create_count" type="object"
+                                 string="Create new account" class="btn-primary"/>
+                         <button string="Cancel" class="btn-secondary" spicial="cancel"/>
+                         <button name="delete_count" type="object"
+                                 string="delete account" class="btn-primary"/>
+                     </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="see_account" model="ir.actions.act_window">
+            <field name="name">Accounts</field>
+            <field name="res_model">count.wizard</field>
+            <field name="view_id" ref="count_wizard_form"/>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+
+</odoo>

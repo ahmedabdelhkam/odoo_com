@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report id="create_project_report"
+            string="print the related report"
+            model="create_wizard"
+            report_type="qweb-pdf"
+            name="Realestate.proj_template"
+            file="Realestate.proj_template"/>
+</odoo>

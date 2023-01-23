@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <data>
+
+
+         <record id="first_views" model="ir.actions.act_window">
+             <field name="name">All realestates</field>
+             <field name="res_model">realestate.formation</field>
+<!--             <field name="view_type">form</field>-->
+             <field name="view_mode">tree,form</field>
+         </record>
+
+         <record id="first_views_tree" model="ir.ui.view">
+             <field name="name">insert.realestate</field>
+             <field name="model">realestate.formation</field>
+             <field name="arch" type="xml">
+                 <tree>
+                     <field name="name_seq"/>
+                     <field name="project_name"/>
+                     <field name="project_number"/>
+                     <field name="company_name"/>
+                     <field name="broker_name"/>
+                     <field name="engineer_id"/>
+                 </tree>
+             </field>
+         </record>
+
+
+
+         <record id="first_views_form" model="ir.ui.view">
+             <field name="name">realestate.formation.form</field>
+             <field name="model">realestate.formation</field>
+             <field name="arch" type="xml">
+                 <form>
+                     <header>
+                         <button name="action_draft" string="Draft"
+                                 type="object" class="oe_highlight"/>
+                         <button name="action_confirm" string="Confirm"
+                                 type="object" class="oe_highlight"/>
+                         <button name="action_done" string="Done"
+                                 type="object" class="oe_highlight"/>
+                         <button name="action_cancel" string="Cancel"
+                                 type="object" class="oe_highlight"/>
+
+                         <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done,cancel"/>
+                     </header>
+                     <sheet>
+                         <group>
+                             <field name="name_seq"/>
+                         </group>
+                         <group>
+                             <field name="project_name"/>
+                             <field name="engineer_id"/>
+                         </group>
+                         <group>
+                             <field name="project_number"/>
+                         </group>
+                          <group>
+                             <field name="company_name"/>
+                         </group>
+                          <group>
+                             <field name="broker_name"/>
+                         </group>
+                          <group>
+                             <field name="user_id"/>
+                         </group>
+                          <group>
+                             <field name="email_id"/>
+                         </group>
+                          <group>
+                             <field name="barcode"/>
+                         </group>
+
+                         <notebook>
+                             <page string="Descreption" name="realestate natebook ">
+                                 <group>
+                                     <field name="realestate_descreption"/>
+                                 </group>
+                             </page>
+                             <page string="Descreption of projects" name="project natebook ">
+                                 <field name="project_assigned">
+                                     <tree>
+                                         <field name="name_seq"/>
+                                         <field name="engineer_name"/>
+<!--                                         <field name="project"/>-->
+                                         <field name="engineer_score"/>
+                                         <field name="engineer_grade"/>
+                                        <field name="assigned_project" invisible="1"/>
+                                     </tree>
+                                     <form>
+                                         <group>
+                                             <group>
+                                                 <field name="name_seq"/>
+                                             </group>
+                                             <group>
+                                                 <field name="engineer_name"/>
+                                             </group>
+<!--                                             <group>-->
+<!--                                                 <field name="project"/>-->
+<!--                                             </group>-->
+                                             <group>
+                                                 <field name="engineer_score"/>
+                                             </group>
+
+                                             <group>
+                                                 <field name="engineer_grade"/>
+                                             </group>
+
+                                             <group>
+                                                 <field name="user_id"/>
+                                             </group>
+                                             <group>
+                                                 <field name="assigned_project" invisible="1"/>
+                                             </group>
+
+                                         </group>
+                                     </form>
+                                 </field>
+                             </page>
+                         </notebook>
+                     </sheet>
+                 </form>
+             </field>
+         </record>
+
+
+         <menuitem name="Realestate" id="system"  sequence="2" />
+         <menuitem name="Realestate" id="insertt" parent="system"  action="first_views"/>
+
+
+         <record id="first_views_search" model="ir.ui.view">
+             <field name="name">search.realestate</field>
+             <field name="model">realestate.formation</field>
+             <field name="arch" type="xml">
+                 <search string="Actionsearch">
+                     <field name="name_seq"/>
+                     <field name="project_name"/>
+                     <field name="project_number"/>
+                     <field name="company_name"/>
+                     <field name="broker_name"/>
+
+                 </search>
+             </field>
+         </record>
+
+     </data>
+</odoo>
+

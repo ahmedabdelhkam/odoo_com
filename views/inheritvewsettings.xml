@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.realestate</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="30"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside" >
+                    <div class="app_settings_block" data-string="realestate" string="Real estate" data-key="Realestate">
+                        <h2>Operations</h2>
+                        <div class="row mt16 o_settings_container" name="operations_setting_container">
+
+                        <h2>Shipping Connectors</h2>
+
+
+
+
+
+                        </div>
+                        <h2 id="schedule_info" invisible="1">Advanced Scheduling</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div id="sale_security_lead"/>
+                            <div id="purchase_po_lead"/>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_stock_config_settings_realestate" model="ir.actions.act_window">
+            <field name="name">Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{'module' : 'Realestate', 'bin_size': False}</field>
+        </record>
+
+        <menuitem id="menu_stock_config_settings_realestate" name="Configuration" parent="system"
+            sequence="100" />
+        <menuitem id="menu_stock_general_settings" name="Settings" parent="menu_stock_config_settings_realestate"
+            sequence="0" action="action_stock_config_settings_realestate" />
+    </data>
+</odoo>

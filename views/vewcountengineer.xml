@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="engineers_count_admin" model="ir.actions.act_window">
+             <field name="name">Accounting administration</field>
+             <field name="res_model">count.engineers</field>
+<!--             <field name="view_type">form</field>-->
+             <field name="view_mode">tree,form</field>
+         </record>
+
+
+        <record id="engineer_count_tree" model="ir.ui.view">
+            <field name="name">count.tree</field>
+            <field name="model">count.engineers</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="engineer_name"/>
+                    <field name="salary"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="engineer_count_form" model="ir.ui.view">
+            <field name="name">count.form</field>
+            <field name="model">count.engineers</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="%(create_projects_two)d" string="Create project"
+                                 type="action" class="oe_highlight"/>
+                    </header>
+
+
+                   <sheet>
+
+
+                        <group>
+                            <field name="engineer_name"/>
+                        </group>
+                        <group>
+                            <field name="salary"/>
+                        </group>
+
+
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <menuitem name="Engineers administration"
+                  id="administration1" parent="system" action="engineers_count_admin"/>
+
+    </data>
+</odoo>
